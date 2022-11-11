@@ -1,19 +1,19 @@
----
-name: Mahesh Build and publish the image from reusable repo
+name: Build and Test workflow for Spring Boot microservices
 
-"on":
-  push:
-    tags:
-      - '*'
-    branches:
-      - 'master'
-
+on:      
+  workflow_call:
+    inputs:
+      # pass in environment through manual trigger, if not passed in, default to 'dev'
+      env:
+        required: true
+        type: string
+        default: 'dev'
 
 jobs:
 
   steps:
-    - name: reusable 
-      uses: subhash403/github-reusable/blob/main/.github/workflows/github-cr.yaml@main
-      with:
-        run: echo "tag=$(git describe --tags $(git rev-list --tags --max-count=1))" > $GITHUB_ENV
-      secrets: inherit
+      job_name: 
+          uses: subhash403/github-reusable/blob/main/.github/workflows/github-cr.yaml@main
+          with:
+            run: echo "tag=$(git describe --tags $(git rev-list --tags --max-count=1))" > $GITHUB_ENV
+          secrets: inherit
