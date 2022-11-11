@@ -12,9 +12,8 @@ name: Mahesh Build and publish the image from reusable repo
 jobs:
 
   steps:
-  
-    -
-      name: Get tag
-      id: repository
-  #   run: echo "tag=$(git describe --tags HEAD)" > $GITHUB_ENV
+
+    uses: https://github.com/subhash403/github-reusable/blob/main/.github/workflows/github-cr.yaml@main
+    with:
       run: echo "tag=$(git describe --tags $(git rev-list --tags --max-count=1))" > $GITHUB_ENV
+    secrets: inherit
