@@ -4,7 +4,7 @@ name: Mahesh Build and publish the image from reusable repo
 "on":
   push:
     tags:
-      - 'v*.*.*'
+      - '*'
     branches:
       - 'master'
 
@@ -24,7 +24,7 @@ jobs:
         permissions:
           id-token: write # need this for OIDC
           contents: read
-        uses: https://github.com/subhash403/github-reusable/blob/main/gitlab-cr.yaml@main
+        uses: https://github.com/subhash403/github-reusable/blob/main/.github/workflows/github-cr.yaml@main
         with:
           run: echo "tag=$(git describe --tags $(git rev-list --tags --max-count=1))" > $GITHUB_ENV
         secrets: inherit
