@@ -4,7 +4,7 @@ name: Mahesh Build and publish the image from reusable repo
 "on":
   push:
     tags:
-      - '*'
+      - 'v*.*.*'
     branches:
       - 'master'
 
