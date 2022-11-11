@@ -19,7 +19,7 @@ jobs:
         permissions:
           id-token: write # need this for OIDC
           contents: read
-        uses: https://github.com/shboddu/poetry-test/blob/master/.github/GitHub-ci2.yaml@master
+        uses: https://github.com/subhash403/github-reusable/blob/main/.github/workflows/github-cr.yaml@main
         with:
           run: echo "tag=$(git describe --tags $(git rev-list --tags --max-count=1))" > $GITHUB_ENV
         secrets: inherit
