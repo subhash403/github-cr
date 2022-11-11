@@ -18,13 +18,3 @@ jobs:
       id: repository
   #   run: echo "tag=$(git describe --tags HEAD)" > $GITHUB_ENV
       run: echo "tag=$(git describe --tags $(git rev-list --tags --max-count=1))" > $GITHUB_ENV
-    -
-      name: asas
-      build-and-test:
-        permissions:
-          id-token: write # need this for OIDC
-          contents: read
-        uses: https://github.com/subhash403/github-reusable/blob/main/.github/workflows/github-cr.yaml@main
-        with:
-          run: echo "tag=$(git describe --tags $(git rev-list --tags --max-count=1))" > $GITHUB_ENV
-        secrets: inherit
